@@ -101,3 +101,23 @@ Reddit má prísne limity na požiadavky. Skript obsahuje:
 - Reddit API nie je oficiálne potrebné - používa verejné endpointy
 - Súkromné wiki (len pre moderatorov) môžu vyžadovať auth
 - Skript je určený pre osobné zálohy - neporušuj Terms of Service
+
+## Spustenie cez run_backup.sh
+
+Pre jednoduchšie spustenie a bezpečné ukončenie použi skript `run_backup.sh`:
+
+```bash
+./run_backup.sh
+```
+
+**Výhody:**
+- Automaticky aktivuje virtuálne prostredie
+- Ukladá PID procesu pre sledovanie
+- Pri Ctrl+C vykoná **graceful ukončenie** (pošle SIGINT namiesto SIGKILL)
+- Všetky už stiahnuté súbory zostanú zachované
+- Čistý výstup so správami o stave
+
+**Ukončenie:**
+- Stlač `Ctrl+C` pre bezpečné ukončenie
+- Skript počká max 10s na čistené ukončenie
+- Ak proces neodpovie, núdzovo ukončí (SIGKILL)

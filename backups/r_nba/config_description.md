@@ -1,1 +1,0 @@
-A community for NBA discussion.
