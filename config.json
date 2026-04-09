@@ -1,0 +1,9 @@
+{
+    "subreddits": [
+        "nba",
+        "soccer",
+        "hockey"
+    ],
+    "rate_limit_delay": 5,
+    "user_agent": "RedditWikiBackup/1.0 (by u/your_username)"
+}
