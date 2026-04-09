@@ -121,3 +121,25 @@ Pre jednoduchšie spustenie a bezpečné ukončenie použi skript `run_backup.sh
 - Stlač `Ctrl+C` pre bezpečné ukončenie
 - Skript počká max 10s na čistené ukončenie
 - Ak proces neodpovie, núdzovo ukončí (SIGKILL)
+
+## Porovnanie spúšťacích skriptov
+
+Projekt obsahuje dva spúšťacie skripty pre rôzne platformy:
+
+### run_backup.sh (Linux/macOS/Windows Git Bash)
+- **Platforma:** Linux, macOS, Windows (Git Bash/MSYS2/Cygwin)
+- **Virtuálne prostredie:** Automatická detekcia (`venv/bin/activate` alebo `venv/Scripts/activate`)
+- **PID tracking:** ✅ Ukladá PID do `.backup.pid` súboru
+- **Graceful ukončenie:** ✅ SIGINT → čakanie 10s → SIGKILL
+- **Chybové hlásenia:** ✅ Exit code s detailmi
+- **Dĺžka:** 72 riadkov
+
+### run_backup.bat (Windows)
+- **Platforma:** Windows (cmd.exe)
+- **Virtuálne prostredie:** `call venv\Scripts\activate.bat`
+- **PID tracking:** ❌ Nie
+- **Graceful ukončenie:** ❌ Len `pause` pred zatvorením
+- **Chybové hlásenia:** ✅ Základné echo správy
+- **Dĺžka:** 21 riadkov
+
+**Odporúčanie:** Použi `run_backup.sh` pre robustnejšie správanie a `run_backup.bat` pre jednoduché Windows prostredie.
