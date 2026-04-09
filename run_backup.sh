@@ -40,7 +40,15 @@ if [ ! -d "venv" ]; then
 fi
 
 echo "[*] Aktivujem virtualne prostredie..."
-source venv/bin/activate
+
+# Detekcia operačného systému pre správnu cestu k activate
+if [ -d "venv/Scripts" ]; then
+    # Windows (Git Bash, MSYS2, Cygwin)
+    source venv/Scripts/activate
+else
+    # Linux/macOS
+    source venv/bin/activate
+fi
 
 echo "[*] Spustam backup..."
 python backup.py &
